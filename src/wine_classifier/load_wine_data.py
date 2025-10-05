@@ -2,6 +2,7 @@ from sklearn.datasets import load_wine
 import pandas as pd
 from typing import Tuple
 
+
 def load_wine_data(as_frame: bool = True) -> Tuple[pd.DataFrame, pd.Series, list, list]:
     """
     Loads the sklearn wine dataset.
