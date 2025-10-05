@@ -1,13 +1,12 @@
-from unittest import result
+import numpy as np
 
 from src.wine_classifier.load_wine_data import load_wine_data
 from src.wine_classifier.model_baseline import train_baseline_model
 
-import numpy as np
 
 def test_baseline_end_to_end():
     # load data (frames or arrays both fine)
-    X, y,_,_  = load_wine_data()
+    X, y, _, _ = load_wine_data()
 
     # train & evaluate
     result = train_baseline_model(X, y)
