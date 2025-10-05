@@ -26,7 +26,7 @@ def train_baseline_model(X, y):
                 - 'confusion_matrix': np.ndarray, confusion matrix of shape (n_classes, n_classes)
     """
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    pipeline = Pipeline([("scaler", StandardScaler()), ("classifier", LogisticRegression())])
+    pipeline = Pipeline([("scaler", StandardScaler()), ("classifier", LogisticRegression(max_iter=1000, random_state=42))])
     pipeline.fit(X_train, y_train)
 
     y_pred = pipeline.predict(X_test)
@@ -34,6 +34,10 @@ def train_baseline_model(X, y):
     accuracy = accuracy_score(y_test, y_pred)
     report = classification_report(y_test, y_pred)
     matrix = confusion_matrix(y_test, y_pred)
+
+    print("Accuracy:", round(accuracy_score(y_test, y_pred), 4))
+    print("\nConfusion matrix:\n", confusion_matrix(y_test, y_pred))
+    print("\nPer-class report:\n", classification_report(y_test, y_pred, digits=4))
 
     return {
         "model": pipeline,
