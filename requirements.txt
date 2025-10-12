@@ -1,10 +1,11 @@
+# Core dependencies
 pandas>=2.2
 numpy>=1.26
 scikit-learn>=1.5
 matplotlib>=3.8
-
-# tooling (we’ll use soon)
-pytest>=8.0
-black>=24.0
-ruff>=0.6
 joblib>=1.4
+
+# Testing and linting
+pytest>=8.0
+ruff>=0.6
+black>=24.0
