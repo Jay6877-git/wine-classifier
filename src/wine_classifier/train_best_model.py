@@ -48,7 +48,7 @@ def train_model(X, y):
     y_pred = pipeline.predict(X_test)
 
     accuracy = accuracy_score(y_test, y_pred)
-    report = classification_report(y_test, y_pred)
+    report = classification_report(y_test, y_pred, output_dict=True)
     matrix = confusion_matrix(y_test, y_pred)
 
     print("Accuracy:", round(accuracy_score(y_test, y_pred), 4))

@@ -18,6 +18,10 @@ def test_model_end_to_end():
     # accuracy floor so test is stable but meaningful
     assert result["accuracy"] > 0.85
 
+    assert isinstance(
+        result["report"], dict
+    ), "Classification report should be a dictionary."
+
     # confusion matrix shape should match 3 classes
     cm = result["confusion_matrix"]
     assert isinstance(cm, (np.ndarray, list))

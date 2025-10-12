@@ -33,7 +33,7 @@ def test_model_io(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     monkeypatch.chdir(tmp_path)
 
     # Load sample dataset
-    X, y = load_wine_data()
+    X, y, _, _ = load_wine_data()
 
     # Train a model using the baseline training pipeline
     result = train_model(X, y)
@@ -45,6 +45,8 @@ def test_model_io(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
 
     # Save evaluation metrics as JSON (excluding model object itself)
     artifacts = {k: v for k, v in result.items() if k != "model"}
+
+    artifacts["confusion_matrix"] = artifacts["confusion_matrix"].tolist()
     metrics_path = save_artifacts(artifacts, tmp_path / "artifacts")
 
     # --- Assert: verify files exist and contain valid data ---
