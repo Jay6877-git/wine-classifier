@@ -1,15 +1,15 @@
 import numpy as np
 
 from src.wine_classifier.load_wine_data import load_wine_data
-from src.wine_classifier.model_baseline import train_baseline_model
+from src.wine_classifier.train_best_model import train_model
 
 
-def test_baseline_end_to_end():
+def test_model_end_to_end():
     # load data (frames or arrays both fine)
     X, y, _, _ = load_wine_data()
 
     # train & evaluate
-    result = train_baseline_model(X, y)
+    result = train_model(X, y)
 
     # basic contract checks
     for key in ("model", "accuracy", "report", "confusion_matrix"):
